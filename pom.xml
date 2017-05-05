@@ -1,0 +1,261 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+  	<groupId>com.kaavsoft.gis.web.viewer</groupId>
+	<artifactId>mongoDBLeafletViewer</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+	<name>mongoDBLeafletViewer-master</name>
+	<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.2.RELEASE</version>
+    </parent>
+	<properties>		
+		<!-- Configuración General -->
+		<java.version>1.8</java.version>
+		
+  		<!-- Configuración de Maven -->
+		<maven.resources.overwrite>true</maven.resources.overwrite>
+		<maven.test.skip>true</maven.test.skip>
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>
+		<maven.resources.overwrite>true</maven.resources.overwrite>
+				
+		<!-- Versiones de Librerias -->
+		<libs.versions.spring-data>1.4.1.RELEASE</libs.versions.spring-data>
+		<libs.versions.cglib>2.2.2</libs.versions.cglib>		
+		<libs.versions.javax.javaee-web-api>6.0</libs.versions.javax.javaee-web-api>
+		<libs.versions.jstl.jslt>1.2</libs.versions.jstl.jslt>
+	</properties>
+	
+	<profiles>
+		<profile>
+	            <id>local</id>
+	            <activation>
+	                <activeByDefault>true</activeByDefault>
+	            </activation>
+	            <properties>
+	                <database.host>127.0.0.1</database.host>
+	                <database.user></database.user>
+	                <database.password></database.password>         
+	            </properties>
+	    </profile>
+		<profile>
+	            <id>dev</id>
+	            <activation>
+	                <activeByDefault>false</activeByDefault>
+	            </activation>
+	            <properties>
+	                <database.host>127.0.0.1</database.host>
+	                <database.user></database.user>
+	                <database.password></database.password>
+	            </properties>
+	    </profile>
+	    <profile>
+	            <id>pre</id>
+	            <activation>
+	                <activeByDefault>false</activeByDefault>
+	            </activation>
+	            <properties>
+	                <database.host>127.0.0.1</database.host>
+	                <database.user></database.user>
+	                <database.password></database.password>
+	            </properties>
+	    </profile>
+	    <profile>
+	            <id>pro</id>
+	            <activation>
+	                <activeByDefault>false</activeByDefault>
+	            </activation>
+	            <properties>
+	                <database.host>127.0.0.1</database.host>
+	                <database.user></database.user>
+	                <database.password></database.password>
+	            </properties>
+	    </profile>	   
+	</profiles>
+	
+	<dependencies>
+			<!-- Spring framework -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.springframework.data</groupId>
+			    <artifactId>spring-data-commons-core</artifactId>
+			    <version>${libs.versions.spring-data}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-security</artifactId>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+			</dependency>
+						
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+			</dependency>
+		
+			<!-- mongodb -->
+			<dependency>
+				<groupId>org.mongodb</groupId>
+				<artifactId>mongo-java-driver</artifactId>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-mongodb</artifactId>
+			</dependency>
+			
+			<dependency>
+        		<groupId>org.springframework.data</groupId>
+	        	<artifactId>spring-data-mongodb</artifactId>
+	  		</dependency>
+	  		
+	  		<dependency>
+        		<groupId>org.springframework.boot</groupId>
+	        	<artifactId>spring-boot-starter-data-mongodb</artifactId>
+	  		</dependency>
+
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>${libs.versions.cglib}</version>
+			</dependency>
+	
+			<!-- General - Provided -->
+			<dependency>
+		    	<groupId>javax</groupId>
+	    		<artifactId>javaee-web-api</artifactId>
+	    		<version>${libs.versions.javax.javaee-web-api}</version>
+		    	<scope>provided</scope>
+		    </dependency>
+			<dependency>
+			    <groupId>javax.servlet</groupId>
+			    <artifactId>javax.servlet-api</artifactId>
+			    <scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>jstl</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${libs.versions.jstl.jslt}</version>
+			</dependency>
+			
+			<!-- Testing -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<scope>test</scope>
+			</dependency>
+	</dependencies>
+
+	<build>
+  		<finalName>mongoDBLeafletViewer</finalName>
+		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<warSourceDirectory>src/main/webapp</warSourceDirectory>
+						<warName>mongoDBLeafletViewer</warName>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
+					</configuration>
+				</plugin>
+	           <!-- Spring Boot Maven -->
+	           <plugin>
+	               <groupId>org.springframework.boot</groupId>
+	               <artifactId>spring-boot-maven-plugin</artifactId>
+	           </plugin>
+			</plugins>			
+		</pluginManagement>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+	</build>
+	
+	
+	
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+ 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+  
+	<developers>
+		<developer>
+			<id>david.caaveiro</id>
+			<name>David Caaveiro Campo</name>
+			<email>david.caaveiro@kaavsoft.com</email>
+			<organization>KAAVsoft</organization>
+			<organizationUrl>http://www.kaavsoft.com</organizationUrl>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+	<url>https://github.com/kaavsoft/gis/web/viewer/mongoDBLeafletViewer-master/</url>
+</project>

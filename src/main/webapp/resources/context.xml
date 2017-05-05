@@ -1,0 +1,11 @@
+<Context path="/MongoDBClientGIS" reloadable="true" useHttpOnly="false">
+		<Resource name="mongodb/MongoDBClientGIS"
+          auth="Container"
+          type="com.mongodb.MongoClient"
+          closeMethod="close"
+          factory="com.mongodb.client.jndi.MongoClientFactory"
+          singleton="true"
+          connectionString="mongodb://localhost"/>
+</Context>
+
+
